@@ -1,0 +1,31 @@
+<p>update-customer works!</p>
+
+{{customer | json}}
+<div>
+    <form *ngIf="customer">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" [(ngModel)]="customer.name"><br>
+
+       
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" [(ngModel)]="customer.email" disabled readonly><br>
+
+        <label for="address">Address</label><br>
+        <input type="number" id="amount" name="amount" [(ngModel)]="customer.address"><br>
+
+        <label for="phoneNo">PhoneNo</label><br>
+        <input type="number" id="amount" name="amount" [(ngModel)]="customer.phoneNo"><br>
+       
+        <!-- <label for="password">Password</label><br>
+        <input type="password" id="password" name="password" [(ngModel)]="customer.password"><br> -->
+
+        <button (click)="updateCustomer()" class="btn btn-info">Update Account</button>
+    </form>
+</div>
+<div *ngIf="message" class="alert alert-success">
+    <p> {{message}}</p>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+    <p> {{errorMessage}}</p>
+</div>
+  

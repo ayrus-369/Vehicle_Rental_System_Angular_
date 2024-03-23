@@ -1,0 +1,33 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 180px; /* Adjust based on your design */
+    height: 100vh;
+    background-color: #f8f9fa; /* Light grey background */
+    padding-top: 80px;
+    /* Adds space at the top */
+}
+
+
+
+
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.nav-link {
+    color: #333;
+    margin: 5px 20px; /* Adds margin to the sides */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: #007bff; /* Blue background on hover/active */
+    color: white;
+}

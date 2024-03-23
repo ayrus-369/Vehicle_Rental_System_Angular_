@@ -1,0 +1,46 @@
+/* Styles for header and logo */
+.app-header {
+    position: fixed; /* Fixes the header at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end; /* Aligns logo container to the right */
+    padding: 13px 12px; /* Adjust as needed */
+    background-color: #f8f9fa; /* Example background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+    z-index: 1030; /* Ensures the header is above other content */
+  }
+  .app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .app-body {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 40px; /* Adjust according to the header's height to ensure content starts below the header */
+  }
+  
+  
+  .sidebar-logo {
+    height: 40px; /* Adjust as needed */
+  }
+  
+  .app-sidebar{
+    width: 180px; 
+    overflow-y: auto; /* Allows scrolling within the sidebar */
+  
+  }
+  .app-container {
+    display: flex;
+    padding-top: 60px; /* Should match the height of the fixed header */
+  }
+  
+
+  .app-content {
+    flex-grow: 1;
+    padding: 30px;
+  }
+  
+  

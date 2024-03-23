@@ -1,0 +1,24 @@
+<table class="table table-bordered" style="margin-top: 20px;">
+ 
+  <thead>
+    <tr>
+     
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Address</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers " >
+  
+      <td>{{customer.name}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.phoneNo}}</td>
+      <td>{{customer.address}}</td>
+    
+
+    
+  </tbody>
+</table>

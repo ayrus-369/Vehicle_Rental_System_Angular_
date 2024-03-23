@@ -1,0 +1,37 @@
+ /* form */
+ /*.input_form{
+    /* background-image: url("/assets/mustang.jpg"); */
+    /* Full height 
+    height: 75vh;
+    width: 100vw;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    background-size:cover;
+    
+  }*/
+ .carousel-item img{
+  height: 95vh;
+  width: 100vw;
+  display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size:cover;
+ }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100vw;
+  }
+  
+  footer p {
+    margin: 0;
+  }

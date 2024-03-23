@@ -1,0 +1,10 @@
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between button and text */
+  }
+  
+  mat-form-field, .mat-checkbox {
+    width: 100%; /* Full width */
+    margin-bottom: 16px; /* Space between fields */
+  }

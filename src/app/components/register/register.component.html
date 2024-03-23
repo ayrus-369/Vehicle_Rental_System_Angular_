@@ -1,0 +1,43 @@
+<p>sign-up works!</p>
+
+
+<div class="d-flex justify-content-center align-items-center flex-column">
+<form id="registrationform" #userForm="ngForm" class="d-flex justify-content-center align-items-center flex-column">
+ 
+  <label for="name">Name</label>
+  <input type="text" id="name" class="form-control" name="name" [(ngModel)]="customer.name" #nameRef="ngModel" pattern="[A-Za-z]{3,}" required><br>
+  <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+      <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name cannot be null</p>
+      <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Name must contain only characters and must contain more than 3 characters</p>
+  </div>
+  
+  <label for="email">Email Id</label>
+  <input type="email" id="email" name="email" [(ngModel)]="customer.email" class="form-control"><br>
+
+  <label for="address">Address</label>
+  <input type="text" id="address" name="address" [(ngModel)]="customer.address" #addressRef="ngModel" class="form-control" required><br>
+  <div *ngIf="addressRef.invalid && (addressRef.touched || addressRef.dirty)">
+      <p *ngIf="addressRef.errors?.['required']" class="text-danger">Address cannont be null</p>
+  </div> 
+
+  <label for="phoneNo">Phone No</label>
+  <input type="number" id="phoneNo" name="phoneNo" [(ngModel)]="customer.phoneNo" class="form-control" #phoneNoRef="ngModel" pattern="[0-9]{1,}" required><br>
+  <div *ngIf="phoneNoRef.invalid && (phoneNoRef.touched || phoneNoRef.dirty)">
+      <p *ngIf="phoneNoRef.errors?.['required']" class="text-danger">PhoneNo cannont be null</p>
+      <p *ngIf="phoneNoRef.errors?.['pattern']" class="text-danger">PhoneNo must not contain characters, and must have 10 digits</p>
+  </div> 
+  <label for="password">Password</label>
+  <input type="password" id="password" class="form-control" name="password" [(ngModel)]="customer.password" #pasRef="ngModel"  required><br>
+
+  <label for="confirmPassword">Confirm Password</label>
+  <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [(ngModel)]="cpassword" #cpasswordRef="ngModel" required><br>
+  <div *ngIf="cpasswordRef.touched || cpasswordRef.dirty" >
+     <p *ngIf="customer.password!=cpassword"> Password and confirmPassword doesn't match</p> 
+  </div>
+  <button (click)="register()" class="btn btn-info">Register</button>
+</form>
+</div>
+<div *ngIf = "message" class="alert alert-success" >
+  <p>{{message}}</p></div>
+<div *ngIf = "errorMessage" class="alert alert-danger" >
+  <p>{{errorMessage}}</p></div>

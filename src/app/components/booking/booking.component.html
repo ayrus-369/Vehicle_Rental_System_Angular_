@@ -1,0 +1,12 @@
+<p>booking works!</p>
+<div>
+    <form name="bookCarForm" #orderform="ngForm" >
+        <input type="text" class="form-control"  [(ngModel)]="bookInputDto.customerEmailId"placeholder="Email" name="customerEmailId"><br>
+        <input type="text" class="form-control" placeholder="Pickup Date" name="pickupDate" [(ngModel)]="bookInputDto.pickupDate"><br>
+        <input type="text" class="form-control" placeholder="Pick up Location" name="pickupLocation" /><br>
+        <input type="text" class="form-control" placeholder="Drop Date" name="dropDate"  [(ngModel)]="bookInputDto.dropDate"><br>
+        <input type="text" class="form-control" placeholder="Drop Location" name="dropLocation"  [(ngModel)]="bookInputDto.dropLocation"><br>
+        <button type="submit" class="btn btn-info" (click)="bookNow(orderform)" >Book Now</button>
+    </form>
+</div>
+

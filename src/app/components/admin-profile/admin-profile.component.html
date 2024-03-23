@@ -1,0 +1,9 @@
+<div class="card">
+    <img src="/assets/profile.png" alt="Admin Profile Image" class="profile-image">
+    <div class="admin-details">
+        <h2 >{{admin.name}}</h2>
+        <p>Email: {{admin.email}}</p>
+        <p>Phone Number :{{admin.phoneNo}}</p>
+    </div>
+    <button class="update-button" (click)="updateAdmin(admin)">Update Details</button>
+</div>

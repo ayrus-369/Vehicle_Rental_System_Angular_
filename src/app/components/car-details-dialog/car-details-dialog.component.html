@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{car.brand}}</h2>
+<mat-dialog-content>
+  <p>Mileage: {{ car.mileage }}</p>
+  <p>Deposit: {{ car.deposit }}</p>
+  <p>Rent: {{ car.rentPerHour }}</p>
+  <p>Fuel Type: {{ car.fuelType }}</p>
+  <p>Gear Type: {{ car.gearType }}</p>
+  <p>No of seats: {{ car.noOfSeats }}</p>
+  <p>Air Conditioned: {{ car.airConditioned ? 'Yes' : 'No' }}</p>
+  <p>Active: {{ car.active?"Yes": "No"}}</p>
+  <p>Available: {{ car.available?'Yes':'No' }}</p>
+  <p>Available: {{ car.engaged?'Yes':'No' }}</p>
+  
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

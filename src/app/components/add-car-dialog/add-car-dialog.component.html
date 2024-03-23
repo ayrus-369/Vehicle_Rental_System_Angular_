@@ -1,0 +1,262 @@
+<h2 mat-dialog-title>Add New Car</h2>
+<mat-dialog-content class="mat-typography">
+  <form #carForm="ngForm" novalidate>
+    <!-- Image URL -->
+    <!-- <div class="mb-3">
+        <label for="formFile" class="form-label"> Image URL: </label>
+        <input class="form-control" type="file" (change)="onFileChanged($event)" id="formFile">
+      </div> -->
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label" >Image Url:</label>
+        <input type="text" [(ngModel)]="car.imageUrl" #imageUrl="ngModel" name="imageUrl" class="form-control" id="imageUrl" placeholder="Enter your image url" required>
+        <div *ngIf="imageUrl.errors?.['required'] && (imageUrl.dirty || imageUrl.touched)">
+          <small class="text-danger">Image URL is required.</small>
+        </div>
+      </div>
+
+    <!-- Brand -->
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand: </label>
+      <input
+        type="text"
+        [(ngModel)]="car.brand"
+        name="brand"
+        class="form-control"
+        #brand="ngModel"
+        id="brand"
+        placeholder="Ford"
+        required
+        minlength="2"
+      />
+      <div *ngIf="brand.errors?.['required'] && (brand.touched || brand.dirty)" class="text-danger">
+        <small class="text-danger">Brand is required.</small>
+        
+      </div>
+     
+      <div *ngIf="brand.errors?.['minlength'] && brand.touched" class="text-danger">
+        <small class="text-danger">Brand must be at least 2 characters long.</small>
+        
+      </div>
+    </div>
+
+    <!-- Register Number -->
+    <div class="mb-3">
+      <label for="registerNumber" class="form-label">Register Number: </label>
+      <input
+        type="text"
+        [(ngModel)]="car.registerNumber"
+        name="registerNumber"
+        class="form-control"
+        id="registerNumber"
+        placeholder="TN59001"
+        #registerNumber="ngModel"
+        required
+        pattern="^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$"
+      />
+      <div *ngIf="registerNumber.errors?.['required'] && registerNumber.touched" class="text-danger">
+        <small class="text-danger">Register number is required.</small>
+  
+      </div>
+      <div *ngIf="registerNumber.errors?.['pattern'] && registerNumber.touched" class="text-danger">
+        <small class="text-danger">Please enter a valid format: XX-XX XXXX, where 'X' represents an uppercase letter and 'X' represents a digit. Spaces or a hyphen are allowed after the first two letters.</small>
+
+      </div>
+    </div>
+
+    <!-- Mileage -->
+    <div class="mb-3">
+      <label for="mileage" class="form-label">Mileage: </label>
+      <input
+        type="text"
+        [(ngModel)]="car.mileage"
+        name="mileage"
+        class="form-control"
+        id="mileage"
+        #mileage="ngModel"
+        placeholder="80"
+        required
+        pattern="^[0-9]*$"
+      />
+      <div *ngIf= " mileage.errors?.['required'] && mileage.touched" class="text-danger">
+     
+        <small class="text-danger">Mileage is required.</small>
+      </div>
+      <div *ngIf="mileage.errors?.['pattern'] && mileage.touched" class="text-danger">
+        <small class="text-danger">  Mileage must be a number.</small>
+      
+      </div>
+    </div>
+
+    <!-- Air Conditioned -->
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="car.airConditioned"
+        name="airConditioned"
+        id="airConditioned"
+      />
+      <label class="form-check-label" for="airConditioned">
+        AirConditioned
+      </label>
+    </div>
+
+    <!-- isActive -->
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="car.active"
+        value="true"
+        name="active"
+      />
+
+      <label class="form-check-label" for="active"> Active </label>
+    </div>
+    <!-- isEngaged -->
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="car.engaged"
+        value="true"
+        id="engaged"
+        name="engaged"
+      />
+      <label class="form-check-label" for="engaged"> Engaged </label>
+    </div>
+    <!-- Availabe status  -->
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="car.available"
+        value="true"
+        id="available"
+        name="available"
+      />
+      <label class="form-check-label" for="available"> Availabe </label>
+    </div>
+    <!-- Fuel Type -->
+    <label for="fuelType" class="form-label">Fuel Type : </label>
+    <select
+      class="form-select"
+      [(ngModel)]="car.fuelType"
+      name="fuelType"
+      id="fuelType"
+      aria-label="Default select example"
+      aria-placeholder="Fuel Type"
+    >
+      <option selected value="GASOLINE">GASOLINE</option>
+      <option value="DIESEL">DIESEL</option>
+      <option value="ELECTRIC">ELECTRIC</option>
+      <option value="HYBRID">HYBRID</option>
+    </select>
+
+    <!-- Gear Type -->
+
+    <label for="gearType" class="form-label">Gear Type : </label>
+    <select
+      class="form-select"
+      [(ngModel)]="car.gearType"
+      name="gearType"
+      id="gearType"
+      aria-label="Default select example"
+      aria-placeholder="Gear Type"
+    >
+      <option selected value="MANUAL">MANUAL</option>
+      <option value="AUTOMATIC">AUTOMATIC</option>
+    </select>
+
+
+    <!-- Deposit -->
+<div class="mb-3">
+  <label for="deposit" class="form-label">Deposit:</label>
+  <input
+    type="number"
+    [(ngModel)]="car.deposit"
+    name="deposit"
+    class="form-control"
+    id="deposit"
+    #deposit="ngModel"
+    placeholder="1000"
+    required
+    min="100"
+  
+  />
+  <div *ngIf="deposit.errors?.['required'] && deposit.touched" class="text-danger">
+    <small class="text-danger">  Deposit is required.</small>
+  
+  </div>
+  <div *ngIf="deposit.errors?.['min'] && deposit.touched" class="text-danger">
+    <small class="text-danger"> Minimum deposit is 100.</small>
+   
+  </div>
+</div>
+
+<!-- Rent Per Hour -->
+<div class="mb-3">
+  <label for="rentPerHour" class="form-label">Rent Per Hour:</label>
+  <input
+    type="number"
+    [(ngModel)]="car.rentPerHour"
+    name="rentPerHour"
+    class="form-control"
+    id="rentPerHour"
+    placeholder="120"
+    required
+    min="100" 
+    #rentPerHour="ngModel"/>
+  <div *ngIf="rentPerHour.errors?.['required'] && rentPerHour.touched "class="text-danger" >
+    <small class="text-danger">Rent per hour is required.</small>
+  </div>
+  <div *ngIf="rentPerHour.errors?.['min'] && rentPerHour.touched" class="text-danger">
+    <small class="text-danger"> Minimum rent per hour is 10.</small>
+   
+  </div>
+</div>
+
+<!-- Location -->
+<div class="mb-3">
+  <label for="location" class="form-label">Location:</label>
+  <input
+    type="text"
+    [(ngModel)]="car.location"
+    name="location"
+    class="form-control"
+    id="location"
+    placeholder="Chennai"
+    required
+    minlength="3"
+    #location="ngModel"
+  />
+  <div *ngIf="location.errors?.['required'] && location.touched" class="text-danger">
+    <small class="text-danger">   Location is required.</small>
+ 
+  </div>
+  <div *ngIf="location.errors?.['minlength'] && location.touched" class="text-danger">
+    <small class="text-danger">Location must be at least 3 characters long.</small>
+
+  </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button
+    type="button"
+    [mat-dialog-close]="carForm.value"
+    class="btn btn-success"
+    style="margin-right: 10px"
+    [disabled]="carForm.invalid"
+  >
+    Save
+  </button>
+
+  <button type="button" mat-dialog-close class="btn btn-danger">
+    Cancel
+  </button>
+</mat-dialog-actions>
+  </form></mat-dialog-content
+>

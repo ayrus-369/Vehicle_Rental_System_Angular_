@@ -1,0 +1,57 @@
+<h2 mat-dialog-title style="padding: 10px;">Edit Admin</h2>
+<mat-dialog-content class="mat-typography" novalidate>
+  
+  <form #adminForm="ngForm">
+    
+    
+    <div class="mb-3">
+        <label for="name" class="form-label">Name : </label>
+        <input type="text" [(ngModel)]="admin.name" #name="ngModel"name="name" class="form-control" id="name" required/>
+      </div>
+      <div *ngIf="name.errors?.['required'] && (name.dirty || name.touched)"><small class="text-danger"> Name is required</small></div>
+
+     
+<div class="mb-3">
+  <label for="email" class="form-label">Email:</label>
+  <input type="email" [(ngModel)]="admin.email" name="email" class="form-control" id="email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required/>
+  <div *ngIf="email.errors?.['required'] && (email.dirty || email.touched)">
+    <small class="text-danger">Email is required.</small>
+  </div>
+  <div *ngIf="email.errors?.['pattern'] && (email.dirty || email.touched)">
+    <small class="text-danger">Please enter a valid email address.</small>
+  </div>
+</div>
+
+
+   
+   
+<div class="mb-3">
+  <label for="phoneNo" class="form-label">Phone Number:</label>
+  <input type="tel" [(ngModel)]="admin.phoneNo" name="phoneNo" class="form-control" id="phoneNo" #phoneNo="ngModel" pattern="[0-9]{10}" required/>
+  <div *ngIf="phoneNo.errors?.['required'] && (phoneNo.dirty || phoneNo.touched)">
+    <small class="text-danger">Phone Number is required.</small>
+  </div>
+  <div *ngIf="phoneNo.errors?.['pattern'] && (phoneNo.dirty || phoneNo.touched)">
+    <small class="text-danger">Please enter a valid 10-digit phone number.</small>
+  </div>
+</div>
+      <!-- <div class="mb-3">
+        <label for="password" class="form-label">Password : </label>
+        <input type="password" [(ngModel)]="admin.password" name="password" class="form-control" id="password" />
+      </div> -->
+
+   
+       
+
+     
+
+ 
+
+<mat-dialog-actions align="end">
+  <!-- <button mat-button [mat-dialog-close]="carForm.value" cdkFocusInitial>
+    Save
+  </button> -->
+  <button type="button" [mat-dialog-close]="adminForm.value" class="btn btn-success" style="margin-right: 10px;" [disabled]="adminForm.invalid">Save</button>
+  <!-- <button mat-button mat-dialog-close>Cancel</button> -->
+  <button type="button" mat-dialog-close class="btn btn-danger">Cancel</button>
+</mat-dialog-actions>

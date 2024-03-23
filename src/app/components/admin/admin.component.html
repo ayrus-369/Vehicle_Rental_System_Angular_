@@ -1,0 +1,31 @@
+
+  <div class="app-layout">
+    <!-- Header -->
+    <div class="app-header">
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="assets/profile.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>Admin</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+          <li><a class="dropdown-item" href="/admin/adminProfile">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Sidebar and Main Content Container -->
+    <div class="app-body">
+      <!-- Sidebar -->
+      <div class="app-sidebar">
+        <app-sidebar></app-sidebar> <!-- Assuming <app-sidebar> is a custom component -->
+      </div>
+      
+      <!-- Main Content -->
+      <div class="app-content">
+        <router-outlet></router-outlet> <!-- Main content loaded here -->
+      </div>
+    </div>
+  </div>
+  

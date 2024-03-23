@@ -1,0 +1,44 @@
+<!-- <div *ngIf='isUserLogedIn' > -->
+    <div>
+        <nav>
+            <ul>
+                <li>
+                    <a routerLink='home' (click)="goHome()" class="left"
+                     routerLinkActive="active">Home</a>
+                </li>
+      
+                <li>
+                    <a routerLink='viewcars' class="left"
+                     routerLinkActive="active">View Cars</a>
+                </li>
+              
+                <div *ngIf="!isLoggedIn; ">
+                <li >
+                    <a routerLink='login'  routerLinkActive="active"  class="right">Sign In</a>
+                </li>
+                <li>
+                    <a routerLink='register'  routerLinkActive="active" class="right">Sign Up</a>
+                </li>
+              </div>
+              <li id="right" *ngIf="isLoggedIn; ">
+                <a type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" routerLinkActive="active" >
+                  View Profile
+                  <ul class="dropdown-menu" id="right">
+                    <li><a class="dropdown-item" href="#" routerLinkActive="active" (click)="update()">Update Profile</a></li>
+                    <li><a class="dropdown-item" href="#" routerLinkActive="active" (click)="update()">View Booking</a></li>
+                    <li><a class="dropdown-item" href="#" routerLink="home" (click)="logout()">Logout</a></li>
+                  </ul>
+                </a>
+                 </li>   
+            </ul>
+        </nav>
+      
+      </div>
+      
+      
+      
+      
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+      
