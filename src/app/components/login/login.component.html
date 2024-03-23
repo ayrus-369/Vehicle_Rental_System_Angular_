@@ -1,18 +1,19 @@
 <p>signin works!</p>
 <div class="d-flex justify-content-center align-items-center flex-column">
     <form name="loginForm" #loginform="ngForm" class="d-flex justify-content-center align-items-center flex-column">
-        <input type="text" class="form-control" placeholder="Email" name="customerEmail" [(ngModel)]="newLogin.customerEmail"><br>
-        <input type="password" class="form-control" placeholder="Password" name="customerPassword"  [(ngModel)]="newLogin.customerPassword"><br>
+        <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="newLogin.email"><br>
+        <input type="password" class="form-control" placeholder="Password" name="password"  [(ngModel)]="newLogin.password"><br>
+        <div style="display: flex;">
+          <button type="submit" class="btn btn-info" (click)="login()" style="margin-right: 10px;">User Login</button>
+          <button type="submit" class="btn btn-info" (click)="Adminlogin()">Admin Login</button>
+      </div>
+      <br>
         
-        
-        <button type="submit" class="btn btn-info" (click)="login()" >Login</button>
-        <br>
-        <br>
 <div>
     <p>New user..?<a href="register" routerLink="register">Register</a></p>
 </div>
     </form>
-    <div *ngIf = "message" class="alert alert-success" >
+    <!-- <div *ngIf = "message" class="alert alert-success" >
         <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
               <div class="toast-body">
@@ -24,4 +25,4 @@
         </div>
     <div *ngIf = "errorMessage" class="alert alert-danger" >
         <p>{{errorMessage}}</p></div>
-</div>
+</div> -->

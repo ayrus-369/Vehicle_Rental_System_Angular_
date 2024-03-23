@@ -83,6 +83,8 @@ export class CarsComponent implements OnInit {
         console.log(res);
         this.openSnackBar("Deactivated the car",this.duration);
       this.cars.filter(obj=> obj.id !== res.id);
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['admin/cars']);});
       },
         error:(err: any)=>{console.log(err);
         },
@@ -113,6 +115,8 @@ export class CarsComponent implements OnInit {
               console.log(data);
               this.message = "Vehicle Updated";
               this.openSnackBar(this.message,  this.duration);
+              this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+                this.router.navigate(['admin/cars']);});
             },
             error:(err:any)=>{
               console.log(err);
@@ -150,7 +154,10 @@ openAddCarModal(): void {
             console.log(data);
             this.message = "Car added";
             this.openSnackBar(this.message,this.duration);
-          },
+            this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['admin/cars']);});
+            },
+          
           error:(err:any)=>{
             console.log(err);
             this.errorMessage = "Error adding Car";

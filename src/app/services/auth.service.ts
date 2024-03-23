@@ -31,6 +31,8 @@ export class AuthService {
 logout(id: number | undefined):Observable<any>{
   return this.httpClient.get("http://localhost:8090/customer/"+id);
 }
+AdminLogin(logindetails:Logintoaccount):Observable<any>{
+  return this.httpClient.post("http://localhost:8090/admin/login",logindetails);}
 
 
 }

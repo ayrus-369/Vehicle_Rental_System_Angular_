@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs'; // Import the Observable type from rxjs
 import { SearchCarPipe } from '../../pipes/search-car.pipe';
 import { ViewDetailsComponent } from '../../view-details/view-details.component';
-// import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-viewcars',

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { EditAdminDialogComponent } from '../edit-admin-dialog/edit-admin-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-profile',
@@ -17,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AdminProfileComponent {
   admin:Admin=new Admin();
   duration:number=4000;
-constructor(private adminService:AdminService,private dialog: MatDialog,private _snackBar:MatSnackBar){
+constructor(private adminService:AdminService,private dialog: MatDialog,private _snackBar:MatSnackBar,private router:Router) {
 this.adminService.getAdmin().subscribe(
   {
     next:(data: Admin)=>{
@@ -54,6 +55,8 @@ updateAdmin(admin:Admin){
           next:(data)=>{
             console.log(data);
             this.openSnackBar("admin Updated",this.duration);
+            this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['admin/adminProfile']);});
            
           },
           error:(err)=>{

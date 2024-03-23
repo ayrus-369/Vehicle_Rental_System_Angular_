@@ -1,6 +1,6 @@
 export class Logintoaccount {
    
-    constructor(public  customerEmail?: string,public customerPassword?:string){
+    constructor(public  email?: string,public password?:string){
 
     }
     // "customerEmail": "string",

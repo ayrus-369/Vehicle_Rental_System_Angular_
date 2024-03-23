@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { timeout } from 'rxjs';
 import { Customer } from '../../model/customer';
+import { AdminService } from '../../services/admin.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class LoginComponent{
   errorMessage:String="";
   newLogin:Logintoaccount = new Logintoaccount();
   currentCustomer:Customer=new Customer();
-  constructor(private authService:AuthService, private router:Router,private appComponent:AppComponent){
+  constructor(private authService:AuthService, private router:Router,private adminService:AdminService){
   }
   login(){
     this.message="";
@@ -39,7 +40,10 @@ export class LoginComponent{
    
     sessionStorage.setItem("isLoggedIn","true");
     alert("Login Successfull")
-    this.router.navigateByUrl("home/" + this.currentCustomer.id);
+    // this.router.navigateByUrl("home/" + this.currentCustomer.id);
+    this.router.navigateByUrl('/RefreshComponenet', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['home/' + this.currentCustomer.id]);
+  }); 
 
     },
     error:(err)=>{
@@ -52,5 +56,37 @@ export class LoginComponent{
     
     }
   })
+}
+Adminlogin(){
+  this.message="";
+  this.errorMessage="";
+  
+  console.log(this.newLogin);
+  
+
+this.authService.AdminLogin(this.newLogin).subscribe({
+
+  
+  next:(data)=>{
+  console.log(data);
+  this.message="Logged in Successfully!....";
+  // timeout(10);
+  this.currentCustomer=data;
+ 
+  sessionStorage.setItem("isLoggedIn","true");
+  alert("Login Successfull")
+  this.router.navigateByUrl("admin");
+
+  },
+  error:(err)=>{
+  console.log(err);
+  //this.message="Error occured While logging in"
+  this.errorMessage=err.error
+  },
+  complete:()=>{
+  console.log("Server completed sending data");
+  
+  }
+})
 }
 }

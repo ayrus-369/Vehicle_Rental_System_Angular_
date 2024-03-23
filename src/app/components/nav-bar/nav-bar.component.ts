@@ -36,7 +36,10 @@ export class NavBarComponent {
   
     this.authService.logout(id);
     sessionStorage.removeItem("isLoggedIn");
-    this.router.navigateByUrl('home');
+    // this.router.navigateByUrl('home');
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['home']);
+  }); 
    
   }
   update()
@@ -45,6 +48,7 @@ export class NavBarComponent {
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
     this.router.navigateByUrl( "update-customer/" + id);
+
   }
 
   goHome(){
