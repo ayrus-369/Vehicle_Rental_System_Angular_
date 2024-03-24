@@ -5,14 +5,13 @@ import { Car } from '../../model/car';
 // import { ButtonModule } from 'primeng/button';
 // import { CardModule } from 'primeng/card';
 import { VehicleService } from '../../services/vehicle.service';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs'; // Import the Observable type from rxjs
 import { SearchCarPipe } from '../../pipes/search-car.pipe';
 import { ViewDetailsComponent } from '../../view-details/view-details.component';
-
 
 @Component({
   selector: 'app-viewcars',
@@ -22,14 +21,20 @@ import { ViewDetailsComponent } from '../../view-details/view-details.component'
   styleUrl: './viewcars.component.css'
 })
 
+
 export class ViewcarsComponent implements OnInit{
   searchTerm:string="";
   message:string="";
   errorMessage:string="";
   cars:Car[]=[]
   duration:number=4000;
+  id:string|null="";
+  carId:number|undefined;
 
-  constructor(private dialog: MatDialog, private router:Router, private vehicleService:VehicleService, private _snackBar: MatSnackBar){}
+  constructor(private dialog: MatDialog, private router:Router, private vehicleService:VehicleService, private _snackBar: MatSnackBar,private activatedRoute:ActivatedRoute){
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+  }
   openSnackBar(msg: string, time: any) {
     this._snackBar.open(msg,"OK",{
       horizontalPosition: 'center',
@@ -39,6 +44,8 @@ export class ViewcarsComponent implements OnInit{
     });
   }
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
     // Initially fetch all vehicles
     this.fetchAllVehicles();
   
@@ -58,10 +65,26 @@ export class ViewcarsComponent implements OnInit{
   }
   
   private fetchAllVehicles(): void {
-    this.vehicleService.getAllVehicles.subscribe((data: Car[]) => { // Specify the type of data returned by getAllVehicles
-      this.cars = data; // Initially set cars to all vehicles
-    },
-    (err: any) => this.handleErrors(err));
+    // this.vehicleService.getAllVehicles.subscribe((data: any) => { // Specify the type of data returned by getAllVehicles
+    //  
+    
+    this.vehicleService.getAllVehicles.subscribe({
+      next:(data:any)=>{
+
+        this.cars=data;
+      },
+      error:(err)=>{
+        this.errorMessage=err.error;
+        console.log(err);
+
+
+
+
+
+
+      }
+
+    })
   }
   
   private handleErrors(err: any): void {
@@ -77,6 +100,7 @@ export class ViewcarsComponent implements OnInit{
   //     {
   //       next:(data: any)=>{
 
+
   //         this.cars=data;
             
   //         },
@@ -85,6 +109,7 @@ export class ViewcarsComponent implements OnInit{
   //          this.openSnackBar("No Vehicles Founded !!",this.duration);
   //         else 
   //         this.openSnackBar("We apologize, there is an internal error. Please try again later !",this.duration);
+
 
   //         },
   //         complete:()=>{
@@ -104,12 +129,20 @@ export class ViewcarsComponent implements OnInit{
   }
   bookVehicle(car: Car){
     console.log(car);
-    this.router.navigateByUrl('/booking');
+    console.log("on click bookVehicle");
+    this.carId=car.id;
+    
+    this.router.navigateByUrl('book-vehicle/'+this.id+'/'+this.carId);
+    
   }
   
 }
 
+
   // onBookButtonClick(){
   //   this.router.navigateByUrl('/book-vehicle');
   // }
+
+
+
 

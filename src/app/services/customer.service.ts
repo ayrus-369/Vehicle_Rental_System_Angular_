@@ -9,4 +9,9 @@ export class CustomerService {
 
   constructor(private httpClient:HttpClient) { }
   getAllCustomers:Observable<any> = this.httpClient.get("http://localhost:8090/customer");
+
+  getCustomerById(id:number):Observable<any>{
+    return this.httpClient.get("http://localhost:8090/customer/"+id);
+  }
+  
 }

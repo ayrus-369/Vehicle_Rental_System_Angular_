@@ -1,0 +1,28 @@
+
+<div *ngIf="payments.length > 0; else noPayments">
+    <h2>Payment History</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Amount</th>
+          <th>Date & Time</th>
+          <th>Vehicle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments">
+          <td>{{ payment.orderId }}</td>
+          <td>{{ payment.amount | currency }}</td>
+          <td>{{ payment.dateTime | date: 'medium' }}</td>
+          <td>{{ payment.vehicle?.registerNumber }} ({{ payment.vehicle?.brand }}) 
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noPayments>
+    <p>No payments found.</p>
+  </ng-template>
+  

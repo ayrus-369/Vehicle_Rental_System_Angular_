@@ -1,0 +1,55 @@
+
+
+<div>
+  <form name="bookCarForm" #orderform="ngForm" (ngSubmit)="bookNow(orderform)">
+    <!-- <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="bookInputDto.customerEmailId"
+      placeholder="Email"
+      name="customerEmailId"
+      required
+      
+      readonly
+    /><br /> -->
+    <label for="pickupDate">Pickup Date</label>
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Pickup Date"
+      name="pickupDate"
+      [(ngModel)]="bookInputDto.pickupDate"
+      required
+    /><br />
+
+    <label for="dropDate">Drop Date</label>
+    <input
+      type="date"
+      class="form-control"
+      placeholder="Drop Date"
+      name="dropDate"
+      [(ngModel)]="bookInputDto.dropDate"
+      required
+    /><br />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Drop Location"
+      name="dropLocation"
+      [(ngModel)]="bookInputDto.dropLocation"
+      required
+    /><br />
+    <button type="submit" class="btn btn-info">Book Now</button>
+  </form>
+</div>
+
+<!-- <form name="bookCarForm" #orderform="ngForm" (ngSubmit)="bookNow(orderform) >
+        <input type="text" class="form-control"  [(ngModel)]="bookInputDto.customerEmailId" placeholder="Email" name="customerEmailId"><br> 
+        <input type="date" class="form-control" placeholder="Pickup Date" name="pickupDate" [(ngModel)]="bookInputDto.pickupDate"><br>
+        <input type="date" class="form-control" placeholder="Drop Date" name="dropDate"  [(ngModel)]="bookInputDto.dropDate"><br>
+        <input type="text" class="form-control" placeholder="Drop Location" name="dropLocation"  [(ngModel)]="bookInputDto.dropLocation"><br>
+        <button type="submit" class="btn btn-info"  >Book Now</button>
+    </form> -->
+
+<!-- <input type="date" [(ngModel)]="myModel.myDate"> -->
+<!-- <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)"></form> (click)="bookNow(orderform)" -->

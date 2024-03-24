@@ -1,0 +1,18 @@
+
+<div *ngIf="bookings.length > 0; else noBookings">
+    <h2>Booking History</h2>
+    <div *ngFor="let booking of bookings" class="booking-card">
+        <h3>Booking ID: {{ booking.bookingId }}</h3>
+        <p>Customer Email: {{ booking.customerEmail }}</p>
+        <p>Customer ID: {{ booking.customerId }}</p>
+        <p>Vehicle ID: {{ booking.vehicleId }}</p>
+        <p>Vehicle Name: {{ booking.vehicleName }}</p>
+        <p>Pick-up Location: {{ booking.pickUpLocation }}</p>
+        <p>Drop-off Location: {{ booking.dropLocation }}</p>
+        <p>Drop-off Date: {{ booking.dropDate }}</p>
+    </div>
+</div>
+
+<ng-template #noBookings>
+    <p>No bookings found.</p>
+</ng-template>

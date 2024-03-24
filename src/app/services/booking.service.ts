@@ -18,5 +18,9 @@ export class BookingService {
   getBookings():Observable<any>{
     return this.http.get("http://localhost:8090/booking");
   }
+  getAllBookingByEmail(email:string):Observable<any>{
+    return this.http.get("http://localhost:8090/booking/customer/"+email)
+    // http://localhost:8090/booking/customer/string
+  }
 
 }

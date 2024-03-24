@@ -42,6 +42,21 @@ export class NavBarComponent {
   }); 
    
   }
+  bookingList()
+  {
+    let id: number = Number(this.currentCustomerId || '0');
+    console.log(id);
+    // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
+    this.router.navigateByUrl( "display-bookings/" + id);
+  }
+
+  paymentList()
+  {
+    let id: number = Number(this.currentCustomerId || '0');
+    console.log(id);
+    // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
+    this.router.navigateByUrl( "display-payments/" + id);
+  }
   update()
   {
     let id: number = Number(this.currentCustomerId || '0');
@@ -56,6 +71,12 @@ export class NavBarComponent {
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
     this.router.navigateByUrl( "home/" + id);
+  }
+  goViewCars(){
+    let id: number = Number(this.currentCustomerId || '0');
+    console.log(id);
+    // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
+    this.router.navigateByUrl( "viewcars/" + id);
   }
 
 }
