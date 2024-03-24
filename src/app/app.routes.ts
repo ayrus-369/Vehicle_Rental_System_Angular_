@@ -14,6 +14,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { UsersComponent } from './components/users/users.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { UnReturnedCarsComponent } from './components/un-returned-cars/un-returned-cars.component';
+import { adminGuard } from './guards/admin.guard';
+import { customerGuard } from './guards/customer.guard';
 
 
 export const routes: Routes = [
@@ -23,21 +26,21 @@ export const routes: Routes = [
     { path: 'home/:id', component: HomeComponent },
     {path:'login' , component :LoginComponent},
     {path:'register', component:RegisterComponent},
-    {path:'booking',component:BookingComponent},
+    {path:'booking',component:BookingComponent,canActivate:[customerGuard]},
     {path:'update-customer',component:UpdateCustomerComponent},
     {path:'update-customer/:id',component:UpdateCustomerComponent},
         {path:'',redirectTo:"home",pathMatch:"full"},
     ]},
   
-    { path: 'admin', component: AdminComponent ,children:[
+    { path: 'admin', component: AdminComponent ,canActivate:[adminGuard], children:[
         { path: 'admin-home', component: AdminHomeComponent },
         { path: 'cars', component: CarsComponent },
         { path: 'users', component: UsersComponent },
         { path: 'orders', component: OrdersComponent },
-        {path:'admin',component: AdminComponent},
         {path:'editCar',component:EditCarDialogComponent},
         {path:'adminProfile',component: AdminProfileComponent},
-     
+        {path:'unReturnedCars',component: UnReturnedCarsComponent}
+    //  {path:'admin',redirectTo:"admin-home",component:AdminHomeComponent}
 
     ]},
     {path:"**",component:PagenotfoundComponent}

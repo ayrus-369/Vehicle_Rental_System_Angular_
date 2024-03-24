@@ -14,6 +14,7 @@ export class AdminHomeComponent {
   carsBooked = 0; // Example static value
   numberOfUsers = 0; // Example static value
   unReturned=0;
+  totalCars=0;
 
   constructor(private vehicleService:VehicleService,private customerService:CustomerService) { 
     this.vehicleService.getUnReturnedVehicles.subscribe({
@@ -55,7 +56,15 @@ export class AdminHomeComponent {
         console.log("Server completed sending data.");
       }
     });
-    
+    this.vehicleService.getAllVehicles.subscribe({
+      next:(data:any)=>{
+        this.totalCars=data.length;
+
+      },
+      error:(err:any)=>{
+        this.totalCars=0;
+      }
+    })
   }
 
 

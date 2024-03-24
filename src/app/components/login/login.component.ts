@@ -61,7 +61,7 @@ Adminlogin(){
   this.message="";
   this.errorMessage="";
   
-  console.log(this.newLogin);
+
   
 
 this.authService.AdminLogin(this.newLogin).subscribe({
@@ -70,10 +70,9 @@ this.authService.AdminLogin(this.newLogin).subscribe({
   next:(data)=>{
   console.log(data);
   this.message="Logged in Successfully!....";
-  // timeout(10);
-  this.currentCustomer=data;
+  sessionStorage.setItem("admin",'true');
  
-  sessionStorage.setItem("isLoggedIn","true");
+ 
   alert("Login Successfull")
   this.router.navigateByUrl("admin");
 

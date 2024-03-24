@@ -1,5 +1,31 @@
-<div class="container">
-    <h2>Orders</h2>
-    <p>Manage your orders here.</p>
-  </div>
-  
+<div>
+
+  <table class="table table-bordered" style="margin-top: 20px;">
+    <thead>
+      <tr>
+       
+        <th>Customer Email</th>
+      
+        <th>Vehicle</th>
+        <th> Vehicle Registration Number</th>
+        <th>Booking Date</th>
+        <th>Pick Up Date </th>
+        <th>Return Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+
+        <td>{{ booking.customerEmail }}</td>
+
+        <td>{{ booking.vehicleName }} </td>
+        <td>{{ booking.vehicleRegisterNumber }} </td>
+      
+      
+        <td>{{ booking.bookingDate | date }}</td>
+        <td>{{booking.pickupDate | date}}</td>
+        <td>{{ booking.dropDate | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
