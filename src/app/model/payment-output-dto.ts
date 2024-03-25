@@ -2,11 +2,12 @@ import { Car } from "./car";
 
 export class PaymentOutputDto 
 {
-    public orderId?:string;
-    public amount?:number;
-    public dateTime?:string;
-    public vehicle?:Car;
-   
+    
+   constructor(
+    public amount?:number,
+    public dateTime?:string,
+    public orderId?:string,
+    public vehicle?:Car){}
 }
 // this.orderId = orderId;
 //         this.amount = amount;

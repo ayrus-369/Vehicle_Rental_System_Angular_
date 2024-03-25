@@ -86,6 +86,30 @@
       
       </div>
     </div>
+    <!-- No Of Seats -->
+    <div class="mb-3">
+      <label for="mileage" class="form-label">No Of Seats: </label>
+      <input
+        type="text"
+        [(ngModel)]="car.noOfSeats"
+        name="noOfSeats"
+        class="form-control"
+        id="noOfSeats"
+        #noOfSeats="ngModel"
+        placeholder="4"
+        required
+        pattern="^[0-9]*$"
+      />
+      <div *ngIf= " noOfSeats.errors?.['required'] && noOfSeats.touched" class="text-danger">
+     
+        <small class="text-danger">Number Of Seats is required.</small>
+      </div>
+      <div *ngIf="noOfSeats.errors?.['pattern'] && noOfSeats.touched" class="text-danger">
+        <small class="text-danger">  Number Of Seats must be a number.</small>
+      
+      </div>
+    </div>
+
 
     <!-- Air Conditioned -->
 
@@ -214,7 +238,7 @@
     <small class="text-danger">Rent per hour is required.</small>
   </div>
   <div *ngIf="rentPerHour.errors?.['min'] && rentPerHour.touched" class="text-danger">
-    <small class="text-danger"> Minimum rent per hour is 10.</small>
+    <small class="text-danger"> Minimum rent per hour is 100.</small>
    
   </div>
 </div>

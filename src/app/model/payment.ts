@@ -1,7 +1,10 @@
 export class Payment 
 {
     constructor(
-        public bookingId?: number,
+        
+        public customerId?:number,
+    public customerEmailId?:string,
+    public vehicleId?:number,
         public amount?: number     
     ) {}
 }

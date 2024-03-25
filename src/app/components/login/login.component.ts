@@ -24,7 +24,7 @@ export class LoginComponent{
   message:String="";
   errorMessage:String="";
   newLogin:Logintoaccount = new Logintoaccount();
-  currentCustomer:Customer=new Customer();
+  currentCustomer:any;
   constructor(private authService:AuthService, private router:Router,private adminService:AdminService){
   }
   login(){
@@ -40,9 +40,10 @@ export class LoginComponent{
    
     sessionStorage.setItem("isLoggedIn","true");
     alert("Login Successfull")
+    sessionStorage.setItem("id",this.currentCustomer.id);
     // this.router.navigateByUrl("home/" + this.currentCustomer.id);
     this.router.navigateByUrl('/RefreshComponenet', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['home/' + this.currentCustomer.id]);
+      this.router.navigate(['home/' +sessionStorage.getItem('id')]);
   }); 
 
     },
@@ -74,7 +75,7 @@ this.authService.AdminLogin(this.newLogin).subscribe({
  
  
   alert("Login Successfull")
-  this.router.navigateByUrl("admin");
+  this.router.navigateByUrl("admin/admin-home");
 
   },
   error:(err)=>{

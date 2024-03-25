@@ -22,7 +22,10 @@ export class VehicleService {
   
   getAllVehiclesByLocation(location: string): Observable<Car[]> {
     return this.httpClient.get<Car[]>(`${this.baseApiUrl}/${location}`);
-    
+
+  }
+  getVehicleById(id:any):Observable<any>{
+    return this.httpClient.get("http://localhost:8090/vehicle/get/"+id)
   }
   getAllAvailabeVehicles:Observable<any> = this.httpClient.get("http://localhost:8090/availableVehicles");
 addVehicle(newCar:Car):Observable<any>{return this.httpClient.post("http://localhost:8090/vehicle",newCar);}

@@ -36,6 +36,7 @@ export class NavBarComponent {
   
     this.authService.logout(id);
     sessionStorage.removeItem("isLoggedIn");
+    sessionStorage.removeItem('id');
     // this.router.navigateByUrl('home');
     this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['home']);
@@ -47,7 +48,8 @@ export class NavBarComponent {
     let id: number = Number(this.currentCustomerId || '0');
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
-    this.router.navigateByUrl( "display-bookings/" + id);
+    
+    this.router.navigateByUrl( "display-bookings/" + sessionStorage.getItem('id'));
   }
 
   paymentList()
@@ -55,14 +57,14 @@ export class NavBarComponent {
     let id: number = Number(this.currentCustomerId || '0');
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
-    this.router.navigateByUrl( "display-payments/" + id);
+    this.router.navigateByUrl( "display-payments/" + sessionStorage.getItem('id'));
   }
   update()
   {
     let id: number = Number(this.currentCustomerId || '0');
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
-    this.router.navigateByUrl( "update-customer/" + id);
+    this.router.navigateByUrl( "update-customer/" + sessionStorage.getItem('id'));
 
   }
 
@@ -70,13 +72,13 @@ export class NavBarComponent {
     let id: number = Number(this.currentCustomerId || '0');
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
-    this.router.navigateByUrl( "home/" + id);
+    this.router.navigateByUrl( "home/" + sessionStorage.getItem("id"));
   }
   goViewCars(){
     let id: number = Number(this.currentCustomerId || '0');
     console.log(id);
     // this.router.navigateByUrl("update-customer/" + this.currentCustomerId);
-    this.router.navigateByUrl( "viewcars/" + id);
+    this.router.navigateByUrl( "viewcars/" + sessionStorage.getItem('id'));
   }
 
 }

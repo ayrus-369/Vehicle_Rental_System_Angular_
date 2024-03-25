@@ -1,11 +1,29 @@
-<p>booking works!</p>
 
-   
-<div>
-    <form name="paymentForm" #orderform="ngForm" >
-        <!-- <input type="text" class="form-control"  [(ngModel)]="bookInputDto.customerEmailId"placeholder="Email" name="customerEmailId"><br> -->
-        
-        <button type="submit" class="btn btn-info" (click)="Payment()" >Proceed Payment</button>
-    </form>
-</div>
+      
+      
+  
+    <!-- Cars Grid -->
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-4 mb-10" style="padding: 10px;" >
+        <div class="card align-items-center justify-content-center" >
+          <img src={{car.imageUrl}} class="card-img-top" alt="Car Image">
+          <div class="card-body">
+            <h5 class="card-title">{{car.brand}}</h5>
+            <p class="card-text">Register Number :  {{car.registerNumber}}</p>
+            <p class="card-text">Location : {{car.location}}</p>
+            <p class="card-text">Customer Email :  {{bookInputDto.customerEmailId}}</p>
+            
+            <p class="card-text">Pick Up Date: {{bookInputDto.pickupDate}}</p>
+            <p class="card-text"> Drop Date : {{bookInputDto.dropDate}}</p>
+            <p class="card-text">Drop Location : {{bookInputDto.dropLocation}}</p>
+            <button (click)="openDetailsDialog(car)" class="btn btn-primary btn-sm button-spacing" >View Vehicle Details</button>
+            <button type="submit" class="btn btn-info btn-sm " (click)="Payment()" >Proceed Payment</button>
+          
+          
+  
+          </div>
+        </div>
+      </div>
+    </div>
 
+  

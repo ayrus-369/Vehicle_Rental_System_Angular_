@@ -68,7 +68,7 @@ export class ViewcarsComponent implements OnInit{
     // this.vehicleService.getAllVehicles.subscribe((data: any) => { // Specify the type of data returned by getAllVehicles
     //  
     
-    this.vehicleService.getAllVehicles.subscribe({
+    this.vehicleService.getAllAvailabeVehicles.subscribe({
       next:(data:any)=>{
 
         this.cars=data;

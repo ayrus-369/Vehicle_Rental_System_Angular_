@@ -2,16 +2,16 @@
 
 <div>
   <form name="bookCarForm" #orderform="ngForm" (ngSubmit)="bookNow(orderform)">
-    <!-- <input
+    <input
       type="text"
       class="form-control"
       [(ngModel)]="bookInputDto.customerEmailId"
       placeholder="Email"
       name="customerEmailId"
-      required
+     id="customerEmailId"
       
       readonly
-    /><br /> -->
+    /><br />
     <label for="pickupDate">Pickup Date</label>
     <input
       type="date"
@@ -20,7 +20,13 @@
       name="pickupDate"
       [(ngModel)]="bookInputDto.pickupDate"
       required
+      #pickupDate="ngModel"
     /><br />
+    <!-- <div *ngIf="bookInputDto.pickupDate<=date && pickupDate.touched && pickupDate.dirty">
+        <small class="text-danger"> Pick Up Date Should Be Greater Than Today's Date</small>
+         
+    </div> -->
+    
 
     <label for="dropDate">Drop Date</label>
     <input
