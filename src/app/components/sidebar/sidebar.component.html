@@ -1,13 +1,22 @@
-
-   <div class="sidebar">
-
+<div class="sidebar">
+  <nav class="nav flex-column">
+    <a class="nav-link" routerLinkActive="active" routerLink="admin-home">Home</a>
     
-    <nav class="nav flex-column">
-      <a class="nav-link" routerLinkActive="active" routerLink="admin-home">Home</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="cars">Cars</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="unReturnedCars">Un Returned Car</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="users">Users</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="orders">Orders</a>
-    </nav>
-  </div>
-  
+    <!-- Dropdown for Car-related links -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Cars
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" routerLink="cars" routerLinkActive="active">All Cars</a></li>
+        <li><a class="dropdown-item" routerLink="availableCars" routerLinkActive="active">Available Cars</a></li>
+        <li><a class="dropdown-item" routerLink="unReturnedCars" routerLinkActive="active">Un Returned Cars</a></li>
+        <li><a class="dropdown-item" routerLink="deactivatedCars" routerLinkActive="active">Deactivated Cars</a></li>
+        <li><a class="dropdown-item" routerLink="bookedCars" routerLinkActive="active">Booked Cars</a></li>
+      </ul>
+    </div>
+    
+    <a class="nav-link" routerLinkActive="active" routerLink="users">Users</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="orders">Orders</a>
+  </nav>
+</div>

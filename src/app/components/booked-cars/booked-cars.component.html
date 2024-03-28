@@ -1,11 +1,14 @@
 <div class="container mt-4">
     <div class="row mb-3">
-     
-   
+    <div class="col">
+        <!-- Search Form -->
+        <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search Cars">
+      </div>
+    
   
     <!-- Cars Grid -->
     <div class="row">
-      <div class="col-md-4 mb-10" style="padding: 10px;" *ngFor="let car of unreturnedBookings" >
+      <div class="col-md-4 mb-10" style="padding: 10px;" *ngFor="let car of cars  | searchCar:searchTerm ">
         <div class="card">
           <img src={{car.imageUrl}} class="card-img-top" alt="Car Image">
           <div class="card-body">
@@ -15,7 +18,8 @@
             <p class="card-text">Location : {{car.location}}</p>
           
             <button (click)="openDetailsDialog(car)" class="btn btn-primary btn-sm button-spacing" >View Details</button>
- 
+  <button class="btn btn-success btn-sm button-spacing" (click)="updateCar(car)">Edit</button>
+  <button class="btn btn-danger btn-sm" (click)="deleteCar(car)">Delete</button>
   
           </div>
         </div>

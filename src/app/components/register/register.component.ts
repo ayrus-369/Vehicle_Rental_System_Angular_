@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Customer } from '../../model/customer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent{
   errorMessage:String="";
   cpassword:String="";
   customer:Customer = new Customer();
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService,private router :Router){
 }
         register(){
             this.message="";
@@ -27,6 +28,8 @@ export class RegisterComponent{
     next:(data)=>{
     console.log(data);
     this.message="Registered Successfully!....";
+    alert("Registered Successfully");
+    this.router.navigateByUrl('/login');
     },
     error:(err)=>{
     console.log(err);

@@ -32,6 +32,7 @@ export class PaymentComponent  {
   paymnetInputDto:Payment=new Payment();
    dropDate:Date=new Date();
  pickupDate:Date=new Date();
+  orderId:string='';
   id:string|null="";
   diffInDays:number=0;
   // numberOfDays?:number;
@@ -125,7 +126,7 @@ error:(err:any)=>{
   
 
 
-console.log(`Pickup Date: ${pickupDate.toISOString()}, Drop Date: ${dropDate.toISOString()}`);
+console.log(`Pickup Date: ${pickupDate.toISOString()}, Drop Date: ${dropDate.toISOString()},`);
 
 
 // Calculate the difference in milliseconds
@@ -147,6 +148,7 @@ console.log(this.car.rentPerHour);
     this.paymentService.createTransaction(this.paymnetInputDto).subscribe({
       next:(response:any)=>{
         console.log(response);
+        this.orderId=response.orderId;
         this.openTransactionalModel(response);
         // this.message="Account added Successfully!....";
         },
@@ -177,6 +179,18 @@ console.log(this.car.rentPerHour);
       image:'homepage.jpg',
       handler:(response:any)=>{
         this.processResponse(response);
+        console.log(this.orderId);
+        
+        this.paymentService.updatePaymentStatus(this.orderId).subscribe({
+          next:(data:any)=>{
+            console.log(data);
+            
+          },
+          error:(error)=>{
+            console.log(error);}
+
+            
+        })
 
       },
       prefill :{
@@ -208,22 +222,7 @@ console.log(this.car.rentPerHour);
        
       }
     });
-    // this.paymentService.getAllUserPaymentById(Number(this.id)).subscribe({
-    //   next:(response)=>{
-    //     console.log(response);
-    //     this.paymentDetails.setPaymentDetails(response); 
-    //     // this.message="Account added Successfully!....";
-    //     },
-     
-    //     error:(err: any)=>{
-        
-    //     console.log(err);
-      
-    //     },
-    //     complete:()=>{
-    //     console.log("Server completed sending data");
-    //     }
-    //   })
+  
     alert('Payment success');
     this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/display-bookings/'+ sessionStorage.getItem('id')]);});

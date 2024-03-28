@@ -12,11 +12,14 @@ export class PaymentService {
   }
   public createTransaction(paymentInputDto:Payment):Observable<any>
   {
-    return this.httpClient.post("http://localhost:8090/createTranscation/customer",paymentInputDto);
+    return this.httpClient.post("http://localhost:8090/createTransaction/customer",paymentInputDto);
   }
   public getAllUserPaymentById(id:number):Observable<any>
   {
     return this.httpClient.get("http://localhost:8090/paymentHistory/"+id);
+  }
+  public updatePaymentStatus(orderId:string):Observable<any>{
+    return this.httpClient.get("http://localhost:8090/paymentStatusUpdate/"+orderId);
   }
 
 }

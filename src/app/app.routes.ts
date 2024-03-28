@@ -21,6 +21,9 @@ import { DisplayPaymentsComponent } from './components/display-payments/display-
 import { DisplayBookingsComponent } from './components/display-bookings/display-bookings.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { BookVehicleComponent } from './components/book-vehicle/book-vehicle.component';
+import { AvailableCarsComponent } from './components/available-cars/available-cars.component';
+import { DeactivatedCarsComponent } from './components/deactivated-cars/deactivated-cars.component';
+import { BookedCarsComponent } from './components/booked-cars/booked-cars.component';
 
 
 export const routes: Routes = [
@@ -51,7 +54,10 @@ export const routes: Routes = [
         { path: 'orders', component: OrdersComponent },
         {path:'editCar',component:EditCarDialogComponent},
         {path:'adminProfile',component: AdminProfileComponent},
-        {path:'unReturnedCars',component: UnReturnedCarsComponent}
+        {path:'unReturnedCars',component: UnReturnedCarsComponent},
+        {path:'availableCars',component: AvailableCarsComponent},
+        {path:'deactivatedCars',component: DeactivatedCarsComponent},
+        {path:'bookedCars',component: BookedCarsComponent},
     //  {path:'admin',redirectTo:"admin-home",component:AdminHomeComponent}
 
     ]},
